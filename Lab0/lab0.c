@@ -11,24 +11,29 @@ int userFile = 0;
 
 void ParseFile(){ //Read the input 
 	int rresp = 0;
-	char * byte, * par;
-	byte = malloc(sizeof(char)*8), par = malloc(sizeof(char)*8); 
-	par = "________";
-	char ch;
+	char * byte, * par, * err;
+	byte = malloc(sizeof(char)*8), par = malloc(sizeof(char)*8), err = malloc(sizeof(char)*8); 
+	par = "________", err = "________";
+	char ch, asc;
 	int dec = 0, count = 0, pcount = 1;
 	while (rresp = read(userFile, &ch, 1)) {
 		if ((ch != '0' && ch != '1') || count >= 8) {
 			//dec = dec * pow(2, (-1*(8-count)));
 			if (fmod(pcount, 2) == 0) {
 				par = "Even";
-	
+				if (count == 8) {
+					err = "False";
+				} else {
+					err = " True";
+				}
 			} else {
 				par = " Odd";
+				err = " True";
 			}
 			for (int i = count; i < 8; i++) {
 				byte[i] = '0';
 			}
-			printf("%8s %8c %8d %8s \n", byte, dec, dec, par);
+			printf("%8s %8c %8d %8s %8s\n", byte, dec, dec, par, err);
 			dec = 0, count = 0; pcount = 0;
 			if (ch != '0' || ch != '1') {
 				continue;
@@ -43,9 +48,10 @@ void ParseFile(){ //Read the input
 		byte[count] = ch;
 		count++;
 	}
+
 }
 
-int main(int argc, char** argv){
+int main(int argc, char *argv[]){
 
 	int i=0;
 
@@ -53,6 +59,22 @@ int main(int argc, char** argv){
 	printf("Original\t ASCII\t Decimal\t  \tParity\n");
 	printf("--------\t--------\t--------\t--------\n");
 
+	//TEST
+
+	if (argc > 1) {
+		if (argv[1][0] != '-') {
+			userFile = open(argv[1], O_RDONLY); 
+		}
+	}
+	if (userFile < 0) {
+		printf("File does not exist or corrupted!");
+	}
+
+	ParseFile();
+
+	//TEST
+	
+	/*
 	//Try to open a file
 	//Using stdin because of no arguments
 	if(argc == 1){
@@ -74,6 +96,7 @@ int main(int argc, char** argv){
 			}
 		}
 	}
+	*/
 
 	return 0;
 
