@@ -13,3 +13,5 @@
 ## Updates
 
 * Update 1: Added ability to open a file and use stdin, Added Table
+
+* Update 2: Added function to calculate values for table but not working. Endless loop
