@@ -6,16 +6,39 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <math.h>
+#define bool int
 
 int userFile = 0;
 
-void ParseFile(){ //Read the input 
-	int rresp = 0;
+int decimalConversion(char *n) { //Convert from binary to decimal
+    int decimalConversion = 0, i = 0, remainder;
+    int numConversion = atoi(n);
+    while (numConversion != 0) {
+        remainder = numConversion % 10;
+        numConversion /= 10;
+        decimalConversion += remainder * pow(2, i);
+        ++i;
+    }
+    return decimalConversion;
+
+}
+
+bool getParity(int n) { //Calculate the parity
+    bool parity = 0;
+    while (n) {
+        parity = !parity;
+        n = n & (n - 1);
+    }
+    return parity;
+}
+
+void parseFile(){ //Read the input and convert to ASCII and Decimal 
+	int x = 0;
 	char * byte;
 	byte = malloc(sizeof(char)*8); 
 	char ch;
 	int decimal = 0, count = 0;
-	while ((rresp = read(userFile, &ch, 1))) {
+	while ((x = read(userFile, &ch, 1))) {
 		if ((ch != '0' && ch != '1') || count >= 8) {
 			//decimal = decimal * pow(2, (-1*(8-count)));
 			/*
@@ -30,7 +53,7 @@ void ParseFile(){ //Read the input
 				byte[i] = '0';
 				
 			}
-			printf("%8s %8c %8d ", byte, decimal, decimal);
+			printf("%8s %8c %8d %8s", byte, decimal, decimal, getParity(decimalConversion(byte)) ? "ODD" : "EVEN");
 			printf("\n");
 			decimal = 0, count = 0;
 			if (ch != '0' || ch != '1') {
@@ -50,11 +73,9 @@ void ParseFile(){ //Read the input
 
 int main(int argc, char *argv[]){
 
-	int i=0;
-
 	//Print the chart
-	printf("Original\t ASCII\t Decimal\t  \tParity\n");
-	printf("--------\t--------\t--------\t--------\n");
+	printf("Original ASCII    Decimal  Parity \n");
+	printf("-------- -------- -------- -------- \n"); 
 
 	//TEST
 
@@ -67,7 +88,7 @@ int main(int argc, char *argv[]){
 		printf("File does not exist or corrupted!");
 	}
 
-	ParseFile();
+	parseFile();
 
 	//TEST
 	
@@ -76,19 +97,19 @@ int main(int argc, char *argv[]){
 	//Using stdin because of no arguments
 	if(argc == 1){
 		userFile = stdin;
-		ParseFile(); //to be implemented
+		parseFile(); //to be implemented
 	}
 	else{
 		for(i=1;i<argc;i++){
 			if(strcmp(argv[i], "-") == 0){ //Using input from stdin
 				userFile = stdin;
-				ParseFile(); //to be implemented
+				parseFile(); //to be implemented
 			}
 
 			else{
 				if(access(argv[i], 0) != -1){ //The file exists to open
 					userFile = open(argv[i], 0);
-					ParseFile(); //to be implemented
+					parseFile(); //to be implemented
 				}	
 			}
 		}
