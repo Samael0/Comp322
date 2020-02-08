@@ -5,7 +5,6 @@
 * Original to ASCII
 * Decimal 
 * Parity
-* T.Error
 
 ## Implemented
 * Reading a file

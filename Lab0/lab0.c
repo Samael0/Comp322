@@ -13,8 +13,8 @@ int main(int argc, char** argv){
 	int i=0;
 
 	//Print the chart
-	printf("Original\t ASCII\t Decimal\t  \tParity\t \tT.error\n");
-	printf("--------\t--------\t--------\t--------\t--------\n");
+	printf("Original\t ASCII\t Decimal\t  \tParity\n");
+	printf("--------\t--------\t--------\t--------\n");
 
 	//Try to open a file
 	//Using stdin because of no arguments
