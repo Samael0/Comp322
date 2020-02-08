@@ -14,3 +14,5 @@
 
 
 ## Updates
+
+* Update 1: Added ability to open a file and use stdin, Added Table
