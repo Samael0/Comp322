@@ -106,12 +106,6 @@ int main(int argc, char *argv[]){
 				parseFile(); //to be implemented
 			}
 
-			else{
-				if(access(argv[i], 0) != -1){ //The file exists to open
-					userFile = open(argv[i], 0);
-					parseFile(); //to be implemented
-				}	
-			}
 		}
 	}
 	*/
