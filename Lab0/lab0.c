@@ -11,39 +11,36 @@ int userFile = 0;
 
 void ParseFile(){ //Read the input 
 	int rresp = 0;
-	char * byte, * par, * err;
-	byte = malloc(sizeof(char)*8), par = malloc(sizeof(char)*8), err = malloc(sizeof(char)*8); 
-	par = "________", err = "________";
-	char ch, asc;
-	int dec = 0, count = 0, pcount = 1;
-	while (rresp = read(userFile, &ch, 1)) {
+	char * byte;
+	byte = malloc(sizeof(char)*8); 
+	char ch;
+	int decimal = 0, count = 0;
+	while ((rresp = read(userFile, &ch, 1))) {
 		if ((ch != '0' && ch != '1') || count >= 8) {
-			//dec = dec * pow(2, (-1*(8-count)));
-			if (fmod(pcount, 2) == 0) {
-				par = "Even";
-				if (count == 8) {
-					err = "False";
-				} else {
-					err = " True";
-				}
+			//decimal = decimal * pow(2, (-1*(8-count)));
+			/*
+			if (parityCount%2 == 0) {
+				parity = "Even";
+				
 			} else {
-				par = " Odd";
-				err = " True";
+				parity = " Odd";
 			}
+			*/
 			for (int i = count; i < 8; i++) {
 				byte[i] = '0';
+				
 			}
-			printf("%8s %8c %8d %8s %8s\n", byte, dec, dec, par, err);
-			dec = 0, count = 0; pcount = 0;
+			printf("%8s %8c %8d ", byte, decimal, decimal);
+			printf("\n");
+			decimal = 0, count = 0;
 			if (ch != '0' || ch != '1') {
 				continue;
 			}
 		}
 		if (ch == '1') {
 			if (count != 0) {
-				dec += pow(2, (7-count));
+				decimal += pow(2, (7-count));
 			}
-			pcount++;
 		} 
 		byte[count] = ch;
 		count++;
