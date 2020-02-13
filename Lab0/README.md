@@ -8,6 +8,8 @@
     * If not using a test file then run the function `makefile noText`
 
 ## To-Do
+* ./lab0 should return error
+* Input invalid
 * Clean Up Code
 * Optimize
 
