@@ -9,6 +9,8 @@
 
 ## To-Do
 * ./lab0 should return error
+* ./lab0 - Should return error
+* iascii
 * Input invalid
 * Clean Up Code
 * Optimize
