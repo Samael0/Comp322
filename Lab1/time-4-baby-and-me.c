@@ -8,7 +8,7 @@
 void getInfo(pid_t tempPID, int ret){
 	waitpid(passP, &ret, 0); //option 0 used to terminate all PID's
 	printf("PID: %d PPID: %d", getpid(), getppid());
-	printf("CPID: %d RETVAL: %d", tempPID, ret);
+	printf("CPID: %d RETVAL: %d\n", tempPID, ret);
 }
 
 //Main function
@@ -25,4 +25,16 @@ int main(){
 		printf("Fork error\n");
 		exit(0);
 	}
+	
+	//Calls function to grab info
+	getInfo(pid, status);
+
+	//Grab the times for processes using the struct
+	times(&processTimes);
+	printf("USER: %jd, SYS: %JD \n", processTimes.tms_utime, processTimes.tms_stime);
+	printf("CUSER: %jd, CSYS: %jd \n", prcoessTimes.tms_cutime, processTimes.tms_cstime);
+	printf("STOP: %jd", time);
+
+	return 0;
+	
 }
