@@ -1,9 +1,6 @@
 # Lab 1 - Time and Forking Children
 
 ## To-Do
-* Fix bugs
-    * Printing twice
-    * Check values
 
 ## Implemented
 * Base for the program
@@ -16,6 +13,9 @@
     * getpid()
     * exit()
 * Makefile
+* Fix bugs
+    * Printing twice
+    * Check values
 
 ## Updates
 
@@ -26,3 +26,5 @@
 * Update 3: Finished the main function and getInfo() function. Need to work on makefile
 
 * Update 4: Created makefiles. Need to fix bugs
+
+* Update 5: Fixed bugs
