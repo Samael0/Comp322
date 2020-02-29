@@ -3,10 +3,12 @@
 #include <time.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <stdlib.h>
+#include <sys/wait.h>
 
 //Function in order to grab info
 void getInfo(pid_t tempPID, int ret){
-	waitpid(passP, &ret, 0); //option 0 used to terminate all PID's
+	waitpid(tempPID, &ret, 0); //option 0 used to terminate all PID's
 	printf("PID: %d PPID: %d", getpid(), getppid());
 	printf("CPID: %d RETVAL: %d\n", tempPID, ret);
 }
@@ -15,7 +17,7 @@ void getInfo(pid_t tempPID, int ret){
 int main(){
 	int status;
 	struct tms processTimes; //Structure containing the proccess times
-	time_t time = time(NULL);
+	time_t timeV = time(NULL);
 	pid_t waitT;
 	pid_t pid = fork(); //Creates new process
 
@@ -32,8 +34,8 @@ int main(){
 	//Grab the times for processes using the struct
 	times(&processTimes);
 	printf("USER: %jd, SYS: %JD \n", processTimes.tms_utime, processTimes.tms_stime);
-	printf("CUSER: %jd, CSYS: %jd \n", prcoessTimes.tms_cutime, processTimes.tms_cstime);
-	printf("STOP: %jd", time);
+	printf("CUSER: %jd, CSYS: %jd \n", processTimes.tms_cutime, processTimes.tms_cstime);
+	printf("STOP: %jd", timeV);
 
 	return 0;
 	
