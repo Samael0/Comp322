@@ -18,3 +18,5 @@
 * Update 1
     * Created launch program that forks a child process and prints information using stderr. Not yet tested. Working on Tube program next
 
+* Update 2
+    * Working on tube program and started the first bit of the program. So far it allocates a pipe.
