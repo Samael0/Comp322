@@ -20,3 +20,6 @@
 
 * Update 2
     * Working on tube program and started the first bit of the program. So far it allocates a pipe.
+
+* Update 3
+    * Finished writing both programs following the to-do list of requirements. Needs testing and polishing to complete
