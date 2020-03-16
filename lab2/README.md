@@ -23,3 +23,6 @@
 
 * Update 3
     * Finished writing both programs following the to-do list of requirements. Needs testing and polishing to complete
+
+* Update 4
+    * Cleared all compile errors. Needs more testing

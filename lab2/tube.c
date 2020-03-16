@@ -7,6 +7,7 @@
 #include <sys/wait.h>
 #include <errno.h>
 #include <stdlib.h>
+#include <string.h>
 
 void forking(int argc, char *argv[], int argz){
     int pipeOne[2];
