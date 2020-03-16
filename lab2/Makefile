@@ -10,5 +10,5 @@ tube: tube.c
 	gcc -o tube tube.c -lm
 	
 clean:
-	-rm launch tube
+	-rm launch tube launch.o tube.o
 	

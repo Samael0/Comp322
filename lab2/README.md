@@ -26,3 +26,6 @@
 
 * Update 4
     * Cleared all compile errors. Needs more testing
+
+* Update 5
+    * Done testing. Program works as intended following the requirements for the project.
